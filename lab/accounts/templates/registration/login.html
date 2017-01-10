@@ -1,0 +1,32 @@
+{% extends 'accounts/base.html' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block content %}
+	<h1>Log in</h1>
+	{% if form.errors %}
+		<p class="error_message">Your username and password didn't match. Please, try again.</p>
+	{% endif %}
+
+	<form method="POST" action="{% url 'login' %}">
+	{% csrf_token %}
+		<table class="fieldwrapper">
+			<tbody>
+				<tr>
+					<td>{{ form.username.label_tag }}</td>
+					<td>{{ form.username }}</td>
+					<td>{{ form.username.errors }}</td>
+				</tr>
+				<tr>
+					<td>{{ form.password.label_tag }}</td>
+					<td>{{ form.password }}</td>
+					<td>{{ form.password.errors }}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<input id="id_submit" type="submit" value="login">
+		<input type="hidden" name="next" value="{{ next }}">
+	</form>
+
+{% endblock %}
