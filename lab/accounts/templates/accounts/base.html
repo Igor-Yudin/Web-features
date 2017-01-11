@@ -14,8 +14,11 @@
 		<script src="{% static 'js/jquery.cookie.js' %}"></script>
 		<link rel="import" href="{% static 'gold-email-input/gold-email-input.html' %}">
 		<link rel="import" href="{% static 'paper-fab/paper-fab.html' %}">
+		<link rel="import" href="{% static 'paper-input/paper-input.html' %}">
+		<link rel="import" href="{% static 'iron-form/iron-form.html' %}">
+		<link rel="import" href="{% static 'paper-button/paper-button.html' %}">
 	</head>
-	<body onload="setHandlers()">
+	<body><!--  onload="setHandlers()"> -->
 		<div class="bar">
 			<div class="btn"><a href="{% url 'login' %}">Log in</a></div>
 			<h1>Our site</h1>
