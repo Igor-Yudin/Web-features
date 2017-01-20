@@ -109,6 +109,14 @@ p {
     padding: 20px 0;
 }
 
+input#input {
+    padding-right: 30px !important;
+}
+
+col {
+    padding: 30px;
+}
+
 input {
     display: block;
     padding: 5px;

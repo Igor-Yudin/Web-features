@@ -4,29 +4,45 @@
 
 {% block content %}
 	<h1>Sign up</h1>
-	<form is="iron-form" method="post" id="id_form">
+	<!-- <form is="iron-form" method="post" id="id_form" action="">
 		{% csrf_token %}
 		<gold-email-input label="Email" name="email" id="id_email" required auto-validate></gold-email-input>
-		<paper-input name="password" label="Password" type="password" required auto-validate min-length="5"></paper-input>
-		<paper-button id="id_submit" raised onclick="id_form.submit()" disabled="true">Sign up</paper-button>
-	</form>
-	<script>
-		id_form.addEventListener('change', function(e) {
-			id_submit.disabled = !id_form.validate();
-		});
-	</script>
-	<!-- <form action="" method="post">{% csrf_token %}
+		<paper-input label="Password" name="password" id="id_password" type="password" required auto-validate minlength="5"></paper-input>
+		<paper-button id="id_submit" onclick="submitForm()" raised disabled>Sign up</paper-button>
+	</form> -->
+	<form action="" method="post" id="id_form">
+		{% csrf_token %}
 		<table class="fieldwrapper">
 			<tbody>
-				{% for field in form %}
+				<tr>
+					<td>
+						<gold-email-input label="Email" name="email" id="id_email" required auto-validate></gold-email-input>
+					</td>
+				</tr>
+				
+				<tr>
+					<td>
+						<paper-input label="Password" name="password" id="id_password" type="password" required auto-validate minlength="5"></paper-input>
+					</td>
+				</tr>
+				<!-- {% for field in form %}
 					<tr>
 						<td>{{ field.label_tag }}</td>
 						<td>{{ field }}</td>
 						<td>{{ field.errors }}</td>
 					</tr>
-				{% endfor %}
+				{% endfor %} -->
 			</tbody>
-		</table> -->
+		</table>
 		<!-- <input id="id_submit" type="submit" value="Sign up" disabled="true"> -->
+		<paper-button id="id_submit" onclick="submitForm()" raised disabled>Sign up</paper-button>
 	</form>
-{% endblock %}
+	<script>
+		id_form.addEventListener('input', function(e) {
+			id_submit.disabled = !(id_email.validate() && id_password.validate());
+		});
+		function submitForm() {
+			document.getElementById('id_form').submit();
+		}
+	</script>
+{% endblock %}	
